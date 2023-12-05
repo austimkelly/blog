@@ -11,20 +11,22 @@ At the time of this writing, it does not appear that any LLM such as Copilot is 
 
 Here's the bulleted list of prompts you can feed to Copilot:
 
-* Do a security code review on this file. Separate out the results with a summary of the problems, potential expexploits, the type of security vulnerabity, and recommended code changes.
-* Provide a threat analysis in the STRIDE format
-* Provide a threat analysis in the PASTA format
-*() Provide links to any CWE related to security vulnerabities found.
-* Please provide an example or examples of how to exploit found vulnerabities in this code.
-* Fix this security vulnerabity
-* Please fix code alert for {code alert summary}
-* Analyze this code and provide results for each vulnerabity found. For each vulnerabity include the following sections:
+* `Do a security code review on this file. Separate out the results with a summary of the problems, potential expexploits, the type of security vulnerabity, and recommended code changes.`
+* `Provide a threat analysis in the STRIDE format`
+* `Provide a threat analysis in the PASTA format`
+* `Provide links to any CWE related to security vulnerabities found.`
+* `Please provide an example or examples of how to exploit found vulnerabities in this code.`
+* `Fix this security vulnerabity`
+* `Please fix code alert for {code alert summary}`
+*  A multi-step prompt for full report:
 
+   ```
+   Analyze this code and provide results for each vulnerabity found. For each vulnerabity include the following sections:
     1. Summary of the Vulnerabity, including lines of offending code
     2. Recommendation for fixing. Please include a code example for what fix should be.
     3. A generic vulnerable code example, in the same language as the found vulnerabity. This should demonstrate a snippet of the vulnerabity.
     4. An example of how an attacker might exploit this vulnerabity
-    5. A References Section with OWASP articles on the found vulnerabity and a list of related CWEs, all with hyperlinks.
+    5. A References Section with OWASP articles on the found vulnerabity and a list of related CWEs, all with hyperlinks.```
 
 # Scope: File
 
