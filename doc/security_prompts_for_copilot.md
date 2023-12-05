@@ -7,7 +7,15 @@ No code scanning tool is perfect and there will invariably many false negatives 
 
 # Audience
 
-Software devlopers who have a ~requirement~ desire to write and review code to ensure safety and security of user data and systems.
+Software devlopers who have a ~~requirement~~ desire to write and review code to ensure safety and security of user data and systems. 
+
+## Security Basic Pre-requisites
+
+The prompts also assume the intendend audience has a basic understand of the following security principles. All software engineerins writing security code should have awareness of these areas:
+
+* Static code analysis and alerts
+* What threat modeling is. If you don't, see [OWASP Threat Modeling](https://owasp.org/www-community/Threat_Modeling) summary
+* What a Common Web Exploit is. If not, please see [What is CWE](https://cwe.mitre.org/about/index.html).
 
 # Limitations
 
