@@ -1,19 +1,18 @@
 
 # Security Prompts for [Github Copilot](https://github.com/features/copilot). 
 
-If you are using Github Copilot in your IDE (e.g. Visual Studio Code), here are some prompts that are like having an Application Security Engineer in your back-pocket. When complimented with a code scanning tool, Copilot + Security prompts will be a massive time saver for software engineers to understand the nature, impact, and remediation of security vulnerabities.
+If you are using Github Copilot in your IDE (e.g. Visual Studio Code), this document provides Applicaiton Security prompts that can assist any software developer to write more secure code. It's like having an Application Security Engineer in your back-pocket! When complimented with a code scanning tool, Copilot + Security prompts will be a massive time saver for software engineers to understand the nature, impact, and remediation of security vulnerabities.
 
-Additionally, there will variable false negatives (vulnerabities missed) as well as high false potitives (vulnerabity flagged where there is noen), so consider some of these prompts to help you dicern the potential impact and fixes to help secure your code.
-
-At the time of this writing, it does not appear that any LLM such as Copilot is integrated into Github Advanced Secuirty. However, Github has announced [AI Powered AppSec](https://github.com/features/preview/security) that will likely make a lot of these workflows native to the developer experience.
+No code scanning tool is perfect and there will invariably many false negatives (vulnerabities missed) and false potitives (vulnerabity flagged where there is noen) alerts in any code.  These prompts can not only help you to discover vulnerabities that code scanner may have missed, but also provide a way to better gauge the actual risk and remediation of any particular code vulnerabity.
 
 # Audience
 
-Software devlopers who have a requirement to write and review code to ensure safety and security of user data and systems.
+Software devlopers who have a ~requirement~ desire to write and review code to ensure safety and security of user data and systems.
 
 # Limitations
 
-Prompts for Copilot will only work on individual files or highligted code snippets. It is not yet possible to evaluate security posture over multiple source files or an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
+* Prompts for Copilot will only work on individual files or highligted code snippets. It is not yet possible to evaluate security posture over multiple source files or an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
+* At the time of this writing, it does not appear that any LLM such as Copilot is integrated into Github Advanced Secuirty. However, Github has announced [AI Powered AppSec](https://github.com/features/preview/security) that will likely make a lot of these workflows native to the developer experience.
 
 # TL;DR
 
@@ -36,7 +35,8 @@ Here's the bulleted list of prompts you can feed to Copilot:
     4. An example of how an attacker might exploit this vulnerabity
     5. A References Section with OWASP articles on the found vulnerabity and a list of related CWEs, all with hyperlinks.```
 
-# Scope: File
+
+# Prompts with Example Output: Scope = File
 
 Here are prompts that I've found useful when asking general questions about a file:
 
@@ -214,9 +214,9 @@ Here's an example of how an attacker could exploit this vulnerability:
 </details>
 
 
-# Scope: Highlighted Code
+# Prompts for Code Fragments
 
-Here are prompts I've found useful when working with a line or block of code:
+Here are prompts I've found useful when working with a line or block of code. These are very straight foward so did no include any sample output.
 
 ## Prompt: Fix a vulnerabity
 
