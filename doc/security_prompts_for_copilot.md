@@ -1,17 +1,27 @@
 
+**Contents**
+
+* [Audience](#audience)
+    * [Security Basic Pre-requisites](#security-basic-pre-requisites)
+* [Limitations](#limitations)
+* [TL;DR](#tldr)
+* [File Scope Prompts w/ Example Output](#prompts-with-example-output-scope--file)
+* [Code Fragment Prompts](#prompts-for-code-fragments)
+* [Typical LLM Disclaimers](#typical-llm-disclaimers)
+
 # Security Prompts for [Github Copilot](https://github.com/features/copilot). 
 
-If you are using Github Copilot in your IDE (e.g. Visual Studio Code), this document provides Applicaiton Security prompts that can assist any software developer to write more secure code. It's like having an Application Security Engineer in your back-pocket! When complimented with a code scanning tool, Copilot + Security prompts will be a massive time saver for software engineers to understand the nature, impact, and remediation of security vulnerabities.
+If you are using Github Copilot in your IDE (e.g. Visual Studio Code), this document provides Application Security prompts that can assist any software developer to write more secure code. It's like having an Application Security Engineer in your back-pocket! When complimented with a code scanning tool, Copilot + Security prompts will be a massive time saver for software engineers to understand the nature, impact, and remediation of security vulnerabilities.
 
-No code scanning tool is perfect and there will invariably many false negatives (vulnerabities missed) and false potitives (vulnerabity flagged where there is noen) alerts in any code.  These prompts can not only help you to discover vulnerabities that code scanner may have missed, but also provide a way to better gauge the actual risk and remediation of any particular code vulnerabity.
+No code scanning tool is perfect and there will invariably many false negatives (vulnerabilities missed) and false positives (vulnerability flagged where there is none) alerts in any code.  These prompts can not only help you to discover vulnerabilities that code scanner may have missed, but also provide a way to better gauge the actual risk and remediation of any particular code vulnerability.
 
 # Audience
 
-Software devlopers who have a ~~requirement~~ desire to write and review code to ensure safety and security of user data and systems. 
+Software developers who have a ~~requirement~~ desire to write and review code to ensure safety and security of user data and systems. 
 
 ## Security Basic Pre-requisites
 
-The prompts also assume the intendend audience has a basic understand of the following security principles. All software engineerins writing security code should have awareness of these areas:
+The prompts also assume the intended audience has a basic understand of the following security principles. All software engineers writing security code should have awareness of these areas:
 
 * Static code analysis and alerts
 * What threat modeling is. If you don't, see [OWASP Threat Modeling](https://owasp.org/www-community/Threat_Modeling) summary
@@ -19,29 +29,29 @@ The prompts also assume the intendend audience has a basic understand of the fol
 
 # Limitations
 
-* Prompts for Copilot will only work on individual files or highligted code snippets. It is not yet possible to evaluate security posture over multiple source files or an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
-* At the time of this writing, it does not appear that any LLM such as Copilot is integrated into Github Advanced Secuirty. However, Github has announced [AI Powered AppSec](https://github.com/features/preview/security) that will likely make a lot of these workflows native to the developer experience.
+* Prompts for Copilot will only work on individual files or highlighted code snippets. It is not yet possible to evaluate security posture over multiple source files or an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
+* At the time of this writing, it does not appear that any LLM such as Copilot is integrated into Github Advanced Security. However, Github has announced [AI Powered AppSec](https://github.com/features/preview/security) that will likely make a lot of these workflows native to the developer experience.
 
 # TL;DR
 
 Here's the bulleted list of prompts you can feed to Copilot:
 
-* `Do a security code review on this file. Separate out the results with a summary of the problems, potential expexploits, the type of security vulnerabity, and recommended code changes.`
+* `Do a security code review on this file. Separate out the results with a summary of the problems, potential exploits, the type of security vulnerability, and recommended code changes.`
 * `Provide a threat analysis in the STRIDE format`
 * `Provide a threat analysis in the PASTA format`
-* `Provide links to any CWE related to security vulnerabities found.`
-* `Please provide an example or examples of how to exploit found vulnerabities in this code.`
-* `Fix this security vulnerabity`
+* `Provide links to any CWE related to security vulnerabilities found.`
+* `Please provide an example or examples of how to exploit found vulnerabilities in this code.`
+* `Fix this security vulnerability`
 * `Please fix code alert for {code alert summary}`
 *  A multi-step prompt for full report:
 
    ```
-   Analyze this code and provide results for each vulnerabity found. For each vulnerabity include the following sections:
-    1. Summary of the Vulnerabity, including lines of offending code
+   Analyze this code and provide results for each vulnerability found. For each vulnerability include the following sections:
+    1. Summary of the Vulnerably, including lines of offending code
     2. Recommendation for fixing. Please include a code example for what fix should be.
-    3. A generic vulnerable code example, in the same language as the found vulnerabity. This should demonstrate a snippet of the vulnerabity.
-    4. An example of how an attacker might exploit this vulnerabity
-    5. A References Section with OWASP articles on the found vulnerabity and a list of related CWEs, all with hyperlinks.```
+    3. A generic vulnerable code example, in the same language as the found vulnerability. This should demonstrate a snippet of the vulnerability.
+    4. An example of how an attacker might exploit this vulnerability
+    5. A References Section with OWASP articles on the found vulnerability and a list of related CWEs, all with hyperlinks.```
 
 
 # Prompts with Example Output: Scope = File
@@ -51,7 +61,7 @@ Here are prompts that I've found useful when asking general questions about a fi
 ## Prompt: Basic open ended security analysis
 
 ```
-Do a security code review on this file. Separate out the results with a summary of the problems, potential expexploits, the type of security vulnerabity, and recommended code changes.
+Do a security code review on this file. Separate out the results with a summary of the problems, potential exploits, the type of security vulnerability, and recommended code changes.
 ```
 
 ### Example Copilot Result
@@ -59,7 +69,7 @@ Do a security code review on this file. Separate out the results with a summary 
 **Source for prompt**: [sqli.py](https://github.com/austimkelly/swiss-cheese/blob/main/sqli/sqli.py)
 
 <details>
-<summary>Generic Secuirty Summary on SQL Injection</summary>
+<summary>Generic Security Summary on SQL Injection</summary>
 ### Summary of the Problems
 
 1. The provided code is relatively secure. It uses parameterized queries to interact with the SQLite database, which helps prevent SQL Injection attacks. However, there are a few potential improvements that could be made.
@@ -175,7 +185,7 @@ To mitigate this threat, you should implement proper authentication and authoriz
 [Common Weakness Enumeration](https://cwe.mitre.org/) (CWE) provides a common language for describing and categorizing software weaknesses in a standardized way, making it easier to identify, understand, and address security issues.
 
  ```
- Provide links to any CWE related to security vulnerabities found.
+ Provide links to any CWE related to security vulnerabilities found.
  ```
 
 **Source for prompt**: [broken-auth.py](https://github.com/austimkelly/swiss-cheese/blob/main/broken-auth/broken-auth.py)
@@ -195,7 +205,7 @@ Please note that CWE (Common Weakness Enumeration) is a community-developed list
 
 ## Prompt: Providing exploit examples
 
-One of the most important aspects of vulnerabity management is reachability and reproducibility: can this reported vulnerabity be reachable and can you provide a reproducible case. 
+One of the most important aspects of vulnerability management is reachability and reproducibility: can this reported vulnerability be reachable and can you provide a reproducible case. 
 
 ```
 Please provide an example or examples of how to exploit found vulnerabities in this code.
@@ -226,13 +236,13 @@ Here's an example of how an attacker could exploit this vulnerability:
 
 Here are prompts I've found useful when working with a line or block of code. These are very straight foward so did no include any sample output.
 
-## Prompt: Fix a vulnerabity
+## Prompt: Fix a vulnerability
 
 ```
-Fix this security vulnerabity
+Fix this security vulnerability
 ```
 
-## Prompt: Fix a vulnerabity from a specific code alert
+## Prompt: Fix a vulnerability from a specific code alert
 
 ```
 Please fix code alert for {code alert summary}
@@ -243,25 +253,25 @@ For example,  `Please fix code alert for "Full server-side request forgery"`
 
 #  Putting it all together: Generating Full Analysis Report
 
-This one would will work on the file level best. I built a prompt to try to recreatet the format of a CodeQL alert. For my tests, it does a pretty good job at identifying problems, fixes and CWE references.  It may provide broken links in the references depending on the age of the training data set.
+This one would will work on the file level best. I built a prompt to try to recreate the format of a CodeQL alert. For my tests, it does a pretty good job at identifying problems, fixes and CWE references.  It may provide broken links in the references depending on the age of the training data set.
 
 ## Prompt: Full analysis report
 
 ```
-Analyze this code and provide results for each vulnerabity found. For each vulnerabity include the following sections:
+Analyze this code and provide results for each vulnerability found. For each vulnerability include the following sections:
 
-1. Summary of the Vulnerabity, including lines of offending code
+1. Summary of the Vulnerability, including lines of offending code
 2. Recommendation for fixing. Please include a code example for what fix should be.
-3. A generic vulnerable code example, in the same language as the found vulnerabity. This should demonstrate a snippet of the vulnerabity.
-4. An example of how an attacker might exploit this vulnerabity
-5. A References Section with OWASP articles on the found vulnerabity and a list of related CWEs, all with hyperlinks.
+3. A generic vulnerable code example, in the same language as the found vulnerability. This should demonstrate a snippet of the vulnerability.
+4. An example of how an attacker might exploit this vulnerability
+5. A References Section with OWASP articles on the found vulnerability and a list of related CWEs, all with hyperlinks.
 ```
 
 ## Example result for full analysis report
 
 Source for prompt: [broken-auth.py](https://github.com/austimkelly/swiss-cheese/blob/main/broken-auth/broken-auth.py)
 
-Note that Github Advanced Security + CodeQL did not alert on any of these vulnerabities.
+Note that Github Advanced Security + CodeQL did not alert on any of these vulnerability.
 
 <details>
 <summary>Security Vulnerabilities Analysis - Full Report</summary>
@@ -370,7 +380,7 @@ if (current_time - last_active_time).days > 5000:
 
 ### Example of How an Attacker Might Exploit This Vulnerability
 
-If an attacker manages to obtain a valid session (for example, via session sidejacking or session fixation), they could potentially use this session to impersonate the user for up to 5000 days, as the session is not invalidated for this period.
+If an attacker manages to obtain a valid session (for example, via session hi-jacking or session fixation), they could potentially use this session to impersonate the user for up to 5000 days, as the session is not invalidated for this period.
 
 ### References
 [OWASP: Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)
@@ -384,7 +394,7 @@ While generated results in the Copilot side-bar look great, it does not do so gr
 
 ## Typical LLM disclaimers
 
-* Results should be taken as suggestions and may be misleading or incorrect. LLMs work by pattern matching and suggesting the most liley response to your query. Human brain is still required.
+* Results should be taken as suggestions and may be misleading or incorrect. LLMs work by pattern matching and suggesting the most likely response to your query. Human brain is still required.
 * The Copilot LLM is based on Github source code for training data. See [Inside Github: Working with the LLMs behind Github Copilot](https://github.blog/2023-05-17-inside-github-working-with-the-llms-behind-github-Copilot/).
 * Be sure to read [Copilot Exclusins](https://docs.github.com/en/Copilot/managing-Copilot-business/configuring-content-exclusions-for-github-Copilot) and [Training Data](https://docs.github.com/en/Copilot/overview-of-github-Copilot/about-github-Copilot-individual#about-github-Copilot) for how to exclude content from suggestions and what data Github uses to train models.
-* Prompts aren't replacements for Appliation Security Experts, code scanners, pen testing, or bug bounty programs. 
+* Prompts aren't replacements for Application Security Experts, code scanners, pen testing, or bug bounty programs. 
