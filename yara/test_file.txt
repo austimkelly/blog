@@ -1,0 +1,1 @@
+echo "cmd.exe /c dir" > test_file.txt
