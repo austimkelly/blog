@@ -32,5 +32,7 @@ def detect_match_with_yara(file_path):
         print(f"No match found based on the YARA rule in file: {file_path}")
 
 # Example usage:
-file_path = "./test_file.txt"  # Replace this with the actual file path
+test_file1 = "./test_file.txt" # Simple regex match
+test_file2 = "./test_file2.txt" # much more complex regex match
+file_path = test_file1  
 detect_match_with_yara(file_path)

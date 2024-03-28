@@ -1,0 +1,6 @@
+@echo off
+set "part1=cmd"
+set "part2=.exe"
+set "part3=/c"
+set "part4=dir"
+%part1%%part2% %part3% %part4%
